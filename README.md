@@ -10,11 +10,12 @@ The code in this repository will demonstrate this odd behavior.
 
 ## Files
 
-- works.xsl, noworky.xsl, unexpectedly-works.xsl : Files that are modified in the small ways to show the problem.
+- [works.xsl](src/main/ml-modules/root/works.xsl), [noworky.xsl](src/main/ml-modules/root/noworky.xsl), [unexpectedly-works.xsl](src/main/ml-modules/root/unexpectedly-works.xsl) : Files that are modified in the small ways to show the problem.
 - Above XSL files `xsl:include` these : var.xsl and included.xsl.
-- included.xsl contains XSL processing intstructions.
-- vars.xsl : this file contains two three variables, one of which is loaded via `document()`.
-- map.xml : file loaded via document()  
+- [included.xsl](src/main/ml-modules/root/included.xsl) contains XSL processing intstructions.
+- [vars.xsl](src/main/ml-modules/root/vars.xsl) : this file contains two three variables, one of which is loaded via `document()`.
+- [map.xml](src/main/ml-modules/root/map.xml) : file loaded via document()  
+- Helper xquery files: works.xqy, noworky.xql, unexpectedly-works.xqy.  The only difference in those files is which XSL each calls.
 
 ## Setup
 
@@ -142,7 +143,7 @@ $ diff src/main/ml-modules/root/works.xsl src/main/ml-modules/root/noworky.xsl
 >       </xsl:when>
 ```
 
-## Worked unexpectedely, but had to remove use of variable related to function-available calls
+## Worked unexpectedly, but had to remove use of variable related to function-available calls
 
 NB: This "unexpectedly works" in that the `madsrdf:isMemberOfMADSScheme` and `bf:source` 
 are present, but at the loss of `bf:adminMetadata`.
