@@ -1,0 +1,19 @@
+#!/bin/bash
+
+ACTION=$1
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+#### 
+# THESE VALUES WILL BE SPECIFIC TO YOUR ENVIRONMENT
+####
+
+MLADMIN=user
+MLPASSWORD=pass
+MODULESDB=some-modules-db
+MLHOST=localhost
+
+######
+######
+
+export GRADLE_OPTS="-Dfile.encoding=utf-8"

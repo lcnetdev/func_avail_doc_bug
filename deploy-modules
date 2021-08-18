@@ -1,0 +1,41 @@
+#!/bin/bash
+
+##################################################################
+# This protects against not being able to locate the `config` file.
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source $DIR/gradlew-params
+
+if [ "$MODULESDB" == "" ];
+then
+    echo "Aborting."
+    echo "Modules DB not set.  This likely means that the environment is invalid."
+    exit 0
+fi
+
+if [ "$MLHOST" != "" ];
+then
+    MLHOST="-PmlHost=$MLHOST"
+fi
+
+echo 
+echo "Gradle props"
+cat gradle.properties
+echo
+echo
+echo "Environment: $ENVIRO"
+echo "Modules db: $MODULESDB"
+echo "MLHOST: $MLHOST"
+echo
+
+
+if [ "$ACTION" == "reload" ];
+then
+    ./gradlew --info mlReloadModules $MLHOST -PmlUsername=$MLADMIN -PmlPassword=$MLPASSWORD -PmlModulesDatabaseName=$MODULESDB
+elif [ "$ACTION" == "watch" ];
+then
+    ./gradlew --info mlWatch $MLHOST -PmlUsername=$MLADMIN -PmlPassword=$MLPASSWORD -PmlModulesDatabaseName=$MODULESDB
+else
+    ./gradlew --info mlLoadModules $MLHOST -PmlUsername=$MLADMIN -PmlPassword=$MLPASSWORD -PmlModulesDatabaseName=$MODULESDB
+fi
+
