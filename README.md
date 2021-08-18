@@ -40,7 +40,7 @@ NB: This example does *not* test for a function that MarkLogic will not know abo
 curl -i --user u:p -H "Content-type: application/xml" --data @data/21451813.marcxml.xml http://host:port/works.xqy
 ```
 
-Correct output:
+Correct/expected output:
 
 ```xml
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
